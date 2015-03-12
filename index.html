@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <x-blink></x-blink>
+    <x-blink data-tempo="500"></x-blink>
 
 <script>
 (function() {
@@ -18,11 +18,14 @@
     element.createdCallback = function() {
         this.textContent = 'custom element';
 
+        // Data attribute in custom element
+        var tempo = this.getAttribute('data-tempo');
+
         // Make it blink
         var that = this;
         setInterval(function() {
             that.style.opacity = 1.0 - that.style.opacity;
-        }, 500);
+        }, tempo);
     };
     
     // Registers a new custom element in the browser
