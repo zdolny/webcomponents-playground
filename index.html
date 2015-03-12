@@ -17,6 +17,12 @@
     // Fires when an instance of the element is created
     element.createdCallback = function() {
         this.textContent = 'custom element';
+
+        // Make it blink
+        var that = this;
+        setInterval(function() {
+            that.style.opacity = 1.0 - that.style.opacity;
+        }, 500);
     };
     
     // Registers a new custom element in the browser
