@@ -1,0 +1,17 @@
+<template id="my_template">
+    <article>Inside the <span>template</span></article>
+</template>
+
+<script>
+(function() {
+    // Reference the import document itself
+    var doc = this.document.currentScript.ownerDocument;
+
+    // Access template's content
+    var template = doc.querySelector('#my_template').content;
+
+    // Clone and append in the DOM
+    document.body.appendChild(template.cloneNode(true));
+
+}());
+</script>

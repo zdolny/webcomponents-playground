@@ -1,0 +1,45 @@
+<template id="blink_template">
+    <style>
+        :host {
+            color: green;
+        }
+        span {
+            color: red;
+        }
+    </style>
+    Inside the <span>template</span>
+</template>
+
+<script>
+(function() {
+    // Reference the import document itself
+    var doc = this.document.currentScript.ownerDocument;
+
+    // Create an object based in the HTML Element prototype
+    var element = Object.create(HTMLElement.prototype);
+    
+    // Fires when an instance of the element is created
+    element.createdCallback = function() {
+        // Access template's content
+        var template = doc.querySelector('#blink_template').content;
+
+        // Clone and append in the DOM
+        var clone = template.cloneNode(true);
+        this.createShadowRoot().appendChild(clone);
+
+        // Data attribute in custom element
+        var tempo = this.getAttribute('data-tempo');
+
+        // Make it blink
+        var that = this;
+        setInterval(function() {
+            that.style.opacity = 1.0 - that.style.opacity;
+        }, tempo);
+    };
+    
+    // Registers a new custom element in the browser
+    document.registerElement('x-blink', {
+        prototype: element
+    });
+}());
+</script>
