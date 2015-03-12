@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>web components</title>
-    <style>
-        x-blink {
-            color: green;
-        }
-        x-blink span {
-            /* no effect inside the shadow DOM */
-            color: yellow;
-        }
-        x-blink::shadow span {
-            /* apply styles inside a single level of shadow DOM */
-            color: blue;
-        }
-        x-blink /deep/ span {
-            /* apply styles inside multiple levels of shadow DOM */
-            color: red;
-        }
-    </style>
 </head>
 <body>
 
     <x-blink data-tempo="500"></x-blink>
+
+<template id="blink_template">
+    <style>
+        :host {
+            color: green;
+        }
+        span {
+            color: red;
+        }
+    </style>
+    Inside the <span>template</span>
+</template>
 
 <script>
 (function() {
@@ -33,11 +28,12 @@
     
     // Fires when an instance of the element is created
     element.createdCallback = function() {
-        // Create a shadow root
-        var shadow = this.createShadowRoot();
-        
-        // Fill it with some markup
-        shadow.innerHTML = '<span>Inside the shadow DOM</span>';
+        // Access template's content
+        var template = document.querySelector('#blink_template').content;
+
+        // Clone and append in the DOM
+        var clone = template.cloneNode(true);
+        this.createShadowRoot().appendChild(clone);
 
         // Data attribute in custom element
         var tempo = this.getAttribute('data-tempo');

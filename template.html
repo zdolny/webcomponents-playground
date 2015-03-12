@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>web components</title>
+</head>
+<body>
+
+<template id="my_template">
+    <article>Inside the <span>template</span></article>
+</template>
+
+<script>
+(function() {
+    
+    // Access template's content
+    var template = document.querySelector('#my_template').content;
+
+    // Clone and append in the DOM
+    document.body.appendChild(template.cloneNode(true));
+
+}());
+</script>
+
+</body>
+</html>
