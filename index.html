@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>web components</title>
+    <style>
+        x-blink {
+            color: green;
+        }
+        x-blink span {
+            /* no effect inside the shadow DOM */
+            color: yellow;
+        }
+        x-blink::shadow span {
+            /* apply styles inside a single level of shadow DOM */
+            color: blue;
+        }
+        x-blink /deep/ span {
+            /* apply styles inside multiple levels of shadow DOM */
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
