@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>web components</title>
+</head>
+<body>
+
+    <my-element></my-element>
+
+<script>
+(function() {
+
+    var element = document.querySelector('my-element');
+
+    // Create a shadow root
+    var shadowRoot = element.createShadowRoot();
+    
+    // Fill it with some markup
+    shadowRoot.innerHTML = '<span>Inside the shadow DOM</span>';
+
+}());
+</script>
+
+</body>
+</html>

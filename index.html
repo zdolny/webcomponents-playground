@@ -16,7 +16,11 @@
     
     // Fires when an instance of the element is created
     element.createdCallback = function() {
-        this.textContent = 'custom element';
+        // Create a shadow root
+        var shadow = this.createShadowRoot();
+        
+        // Fill it with some markup
+        shadow.innerHTML = '<span>Inside the shadow DOM</span>';
 
         // Data attribute in custom element
         var tempo = this.getAttribute('data-tempo');
