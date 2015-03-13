@@ -1,0 +1,20 @@
+{
+  "name": "webcomponents-playground",
+  "version": "0.1.0",
+  "authors": [
+    "Michał Dolny <michal.dolny@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "~0.5.5"
+  }
+}

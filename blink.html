@@ -13,7 +13,7 @@
 <script>
 (function() {
     // Reference the import document itself
-    var doc = this.document.currentScript.ownerDocument;
+    var doc = this.document._currentScript.ownerDocument;
 
     // Create an object based in the HTML Element prototype
     var element = Object.create(HTMLElement.prototype);
