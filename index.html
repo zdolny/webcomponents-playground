@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <x-blink data-tempo="500"></x-blink>
+    <h1 is="x-blink" data-tempo="500"></h1>
 
 <template id="blink_template">
     <style>
@@ -46,8 +46,10 @@
     };
     
     // Registers a new custom element in the browser
+    // and extends an existing element
     document.registerElement('x-blink', {
-        prototype: element
+        prototype: element,
+        extends: 'h1'
     });
 }());
 </script>
